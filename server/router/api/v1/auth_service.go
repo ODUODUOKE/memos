@@ -88,6 +88,11 @@ func (s *APIV1Service) SignIn(ctx context.Context, request *v1pb.SignInRequest) 
 			return nil, status.Errorf(codes.PermissionDenied, "password signin is not allowed")
 		}
 		existingUser = user
+
+		if true {
+			return nil, status.Errorf(codes.PermissionDenied, "signin is not allowed")
+		}
+
 	} else if ssoCredentials := request.GetSsoCredentials(); ssoCredentials != nil {
 		// Authentication Method 2: SSO (OAuth2) authentication
 		identityProvider, err := s.Store.GetIdentityProvider(ctx, &store.FindIdentityProvider{
